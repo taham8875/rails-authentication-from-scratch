@@ -11,6 +11,21 @@
   </head>
 
   <body>
+    <div><%= notice %></div>
+    <div><%= alert %></div>
+
+
+    <% if user_signed_in? %>
+      <div>
+        Logged in as <%= current_user.email %>.
+        <%= link_to "Edit password", edit_password_path %>
+        <%= button_to "Log out", session_path, method: :delete %>
+      </div>
+    <% else %>
+      <%= link_to "Sign up", new_registration_path %>
+      <%= link_to "Log in", new_session_path %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
